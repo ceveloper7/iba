@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.iba</groupId>
+    <artifactId>master</artifactId>
+    <name>Information Business Application - Master</name>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <iba.version>1.0-SNAPSHOT</iba.version>
+        <iba.springframework.version>6.2.2</iba.springframework.version>
+        <iba.springframework.boot.version>3.4.3</iba.springframework.boot.version>
+        <iba.jakarta.annotation.version>1.3.2</iba.jakarta.annotation.version>
+        <iba.slf4j.version>2.0.16</iba.slf4j.version>
+        <iba.logback.version>1.5.16</iba.logback.version>
+
+        <iba.jdk.version>23</iba.jdk.version>
+        <iba.build.directory>target</iba.build.directory>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.redirectTestOutputToFile>false</maven.test.redirectTestOutputToFile>
+    </properties>
+
+</project>
