@@ -12,7 +12,8 @@
 
     <artifactId>core</artifactId>
     <packaging>pom</packaging>
-    <name>IBA - Information Business Application - Core</name>
+    <name>IBA - Information Business Application - Core Module</name>
+
     <modules>
         <module>core-util</module>
     </modules>
