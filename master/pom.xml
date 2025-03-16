@@ -13,6 +13,7 @@
     <properties>
         <iba.version>1.0-SNAPSHOT</iba.version>
         <iba.hikaricp.version>6.2.1</iba.hikaricp.version>
+        <iba.posgresql.version>42.7.3</iba.posgresql.version>
         <iba.springframework.version>6.2.2</iba.springframework.version>
         <iba.springframework.boot.version>3.4.3</iba.springframework.boot.version>
         <iba.jakarta.annotation.version>1.3.2</iba.jakarta.annotation.version>

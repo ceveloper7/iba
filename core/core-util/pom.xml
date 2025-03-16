@@ -20,6 +20,16 @@
             <artifactId>spring-context</artifactId>
             <version>${iba.springframework.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${iba.posgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${iba.hikaricp.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
