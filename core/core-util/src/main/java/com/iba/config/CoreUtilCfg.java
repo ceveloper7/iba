@@ -1,8 +1,10 @@
 package com.iba.config;
 
+import com.iba.db.IBAConnection;
 import com.iba.db.IBA_DB_PostgreSQL;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.postgresql.Driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,7 +62,7 @@ public class CoreUtilCfg {
     private String pwd;
 
     @Bean
-    public String connectionUrl(){
+    public String connectionStringUrl(){
         StringBuilder sb = new StringBuilder("jdbc:postgresql://")
                 .append(dbHost)
                 .append(":").append(dbPort)
@@ -73,7 +75,7 @@ public class CoreUtilCfg {
     public DataSource dataSource(){
         try {
             var hc = new HikariConfig();
-            hc.setJdbcUrl(connectionUrl());
+            hc.setJdbcUrl(connectionStringUrl());
             hc.setDriverClassName(driverClass);
             hc.setUsername(pwd);
             hc.setPassword(pwd);
@@ -90,5 +92,15 @@ public class CoreUtilCfg {
             logger.error("Hikari Datasource bean cannot be creayed");
             return null;
         }
+    }
+
+    @Bean
+    public IBAConnection ibaConnection(){
+        return new IBAConnection();
+    }
+
+    @Bean
+    public org.postgresql.Driver s_driver(){
+        return new Driver();
     }
 }

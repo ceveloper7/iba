@@ -2,11 +2,15 @@ package com.iba.db;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class IBADatabases {
     public static int CONNECTION_TIMEOUT = 10;
+
+    @Value("${dbType}")
+    public static String DB_POSTGRESQL;
 
     private static IBA_DB_PostgreSQL iba_db_postgreSQL;
 

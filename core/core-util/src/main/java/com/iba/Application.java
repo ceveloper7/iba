@@ -8,10 +8,10 @@ import java.util.Arrays;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-//        var ctx = SpringApplication.run(Application.class);
-//        Arrays.stream(ctx.getBeanDefinitionNames())
-//                .sorted()
-//                .forEach(System.out::println);
-        SpringApplication.run(Application.class);
+        var ctx = SpringApplication.run(Application.class);
+        Arrays.stream(ctx.getBeanDefinitionNames())
+                .sorted()
+                .forEach(System.out::println);
+        //SpringApplication.run(Application.class);
     }
 }
