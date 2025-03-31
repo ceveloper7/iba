@@ -16,7 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackages = {"com.iba.database"})
+@ComponentScan(basePackages = {"com.iba.db"})
 @PropertySource("classpath:db/database.properties")
 public class CoreUtilCfg {
     private static final Logger logger = LoggerFactory.getLogger(CoreUtilCfg.class);
@@ -67,7 +67,7 @@ public class CoreUtilCfg {
     }
 
     @Bean
-    public DataSource dataSource(){
+    public HikariDataSource dataSource(){
         try {
             var hc = new HikariConfig();
             hc.setJdbcUrl(connectionStringUrl());

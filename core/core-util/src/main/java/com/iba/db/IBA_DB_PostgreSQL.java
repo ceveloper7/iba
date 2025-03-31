@@ -21,17 +21,13 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
     @Autowired
     private org.postgresql.Driver s_driver;
 
-    private DataSource dataSource;
+    private HikariDataSource dataSource;
 
     /** Data Source	Long Running 	*/
     private DataSource datasourceLongRunning = null;
 
-    HikariDataSource hikariDataSource = (HikariDataSource) dataSource;
     /** Data Source	Short Running 	*/
     //private DataSource datasourceShortRunning = null;
-
-//    @Autowired
-//    private DataSource dataSource;
 
     @Value("${driverClass}")
     public static String DRIVER;
@@ -125,7 +121,7 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
         try
         {
             StringBuilder logBuffer = new StringBuilder();
-            HikariPoolMXBean mxBean = hikariDataSource.getHikariPoolMXBean();
+            HikariPoolMXBean mxBean = dataSource.getHikariPoolMXBean();
 
             logBuffer.append("# Connections: ").append(mxBean.getTotalConnections());
             logBuffer.append(" , # Busy Connections: ").append(mxBean.getActiveConnections());
@@ -186,14 +182,14 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
 
         StringBuilder sb = new StringBuilder();
         try{
-            HikariPoolMXBean mxBean = hikariDataSource.getHikariPoolMXBean();
+            HikariPoolMXBean mxBean = dataSource.getHikariPoolMXBean();
 
             sb.append("# Connections: ").append(mxBean.getTotalConnections());
             sb.append(" , # Busy Connections: ").append(mxBean.getActiveConnections());
             sb.append(" , # Idle Connections: ").append(mxBean.getIdleConnections());
             sb.append(" , # Threads waiting on connection: ").append(mxBean.getThreadsAwaitingConnection());
-            sb.append(" , # Min Pool Size: ").append(hikariDataSource.getMinimumIdle());
-            sb.append(" , # Max Pool Size: ").append(hikariDataSource.getMaximumPoolSize());
+            sb.append(" , # Min Pool Size: ").append(dataSource.getMinimumIdle());
+            sb.append(" , # Max Pool Size: ").append(dataSource.getMaximumPoolSize());
             //sb.append(" , # Open Transactions: ").append(Trx.getOpenTransactions().length);
         }
         catch (Exception e){
@@ -205,7 +201,7 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
     @Override
     public void close(){
         try{
-            hikariDataSource.close();
+            dataSource.close();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -213,7 +209,7 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
     }
 
     @Autowired
-    public void setDataSource(DataSource dataSource){
+    public void setDataSource(HikariDataSource dataSource){
         this.dataSource = dataSource;
     }
 }
