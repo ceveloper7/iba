@@ -20,6 +20,7 @@ webcomponents/tool/src/main/frontend/dist
 rubrics/tool/src/main/frontend
 bower_components
 rebel.xml
+notes.txt
 .mvn/wrapper/maven-wrapper.jar
 .checkstyle
 assets
