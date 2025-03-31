@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.iba</groupId>
+    <artifactId>master</artifactId>
+    <name>Information Business Application - Master</name>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <iba.version>1.0-SNAPSHOT</iba.version>
+        <iba.hikaricp.version>6.2.1</iba.hikaricp.version>
+        <iba.posgresql.version>42.7.3</iba.posgresql.version>
+        <iba.springframework.version>6.2.2</iba.springframework.version>
+        <iba.springframework.boot.version>3.4.2</iba.springframework.boot.version>
+        <iba.springframework.boot.logging.version>3.4.2</iba.springframework.boot.logging.version>
+        <iba.jakarta.annotation.version>1.3.2</iba.jakarta.annotation.version>
+        <iba.junit.jupiter.version>5.12.1</iba.junit.jupiter.version>
+        <iba.junit.jupiter.engine.version>5.12.1</iba.junit.jupiter.engine.version>
+        <iba.junit.jupiter.params.version>5.12.1</iba.junit.jupiter.params.version>
+        <iba.hamcrest.version>3.0</iba.hamcrest.version>
+        <iba.mockito.version>5.16.0</iba.mockito.version>
+        <iba.slf4j.version>2.0.16</iba.slf4j.version>
+<!--        <iba.logback.version>1.5.16</iba.logback.version>-->
+
+        <iba.jdk.version>23</iba.jdk.version>
+        <iba.build.directory>target</iba.build.directory>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.redirectTestOutputToFile>false</maven.test.redirectTestOutputToFile>
+    </properties>
+
+</project>
