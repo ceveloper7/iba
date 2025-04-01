@@ -47,6 +47,9 @@ public class IBAConnection {
     private IBAGeneralDatabase m_db = null;
     private boolean m_okDB = false;
 
+    @Autowired
+    private IBADatabases ibaDatabases;
+
     public IBAConnection(){}
 
     public String getConnectionStringUrl(){
@@ -100,7 +103,7 @@ public class IBAConnection {
 
         if(m_db == null){
             try{
-                m_db = IBADatabases.getDatabase(getDbType());
+                m_db = ibaDatabases.getDatabase(getDbType());
                 if(m_db == null){
                     m_db.getDataSource(this);
                 }

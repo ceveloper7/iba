@@ -38,6 +38,7 @@ public class CoreUtilCfg {
     @Value("${dbUserPwd}")
     private String dbUserPwd;
 
+    @Bean
     public String connectionStringUrl(){
         StringBuilder sb = new StringBuilder("jdbc:postgresql://")
                 .append(dbHost)

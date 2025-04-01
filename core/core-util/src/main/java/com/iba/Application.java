@@ -1,6 +1,7 @@
 package com.iba;
 
 import com.iba.config.CoreUtilCfg;
+import com.iba.db.IBAConnection;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
@@ -8,7 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
         var ctx = new AnnotationConfigApplicationContext(CoreUtilCfg.class);
-        var ibaConnection = ctx.getBean(IBAConnection.class);
-        System.out.println(ibaConnection.getConnectionURL());
+        var connection = ctx.getBean(IBAConnection.class);
+        System.out.println(connection.getConnectionURL());
     }
 }

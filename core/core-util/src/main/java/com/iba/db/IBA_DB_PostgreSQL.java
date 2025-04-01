@@ -40,7 +40,7 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
 
     @Override
     public String getName() {
-        return IBADatabases.DB_POSTGRESQL;
+        return IBADatabases.IBA_DB_POSTGRESQL;
     }
 
     @Override
