@@ -9,7 +9,7 @@ public interface IBAGeneralDatabase {
     static final int LOCK_TIME_OUT = 60;
 
 
-     /*  Get Database Name
+    /*  Get Database Name
      *  @return database short name
      */
     public String getName();
@@ -41,7 +41,7 @@ public interface IBAGeneralDatabase {
     public String getConnectionURL(IBAConnection connection);
 
 
-     /* Get Connection URL
+    /* Get Connection URL
      *	@param dbHost db Host
      *	@param dbPort db Port
      *	@param dbName db Name
@@ -110,7 +110,7 @@ public interface IBAGeneralDatabase {
     public Connection getDriverConnection (IBAConnection connection) throws SQLException;
 
     /**
-            * 	Get Driver Connection
+     * 	Get Driver Connection
      *	@param dbUrl URL
      *	@param dbUid user
      *	@param dbPwd password
@@ -131,5 +131,4 @@ public interface IBAGeneralDatabase {
      * 	Close
      */
     public void close();
-
 }

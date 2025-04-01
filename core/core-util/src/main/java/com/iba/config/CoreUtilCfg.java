@@ -1,7 +1,5 @@
 package com.iba.config;
 
-import com.iba.db.IBAConnection;
-import com.iba.db.IBA_DB_PostgreSQL;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.postgresql.Driver;
@@ -13,27 +11,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import javax.sql.DataSource;
-
 @Configuration
 @ComponentScan(basePackages = {"com.iba.db"})
 @PropertySource("classpath:db/database.properties")
 public class CoreUtilCfg {
     private static final Logger logger = LoggerFactory.getLogger(CoreUtilCfg.class);
-
-    @Bean
-    public String[] dbNames(){
-        return new String[]{
-                "PostgreSQL"
-        };
-    }
-
-    @Bean
-    public Class<?>[] dbClasses(){
-        return new Class[]{
-                IBA_DB_PostgreSQL.class
-        };
-    }
 
     @Value("${driverClass}")
     private String driverClass;
@@ -50,13 +32,12 @@ public class CoreUtilCfg {
     @Value("${dbType}")
     private String dbType;
 
-    @Value("${uid}")
-    private String uid;
+    @Value("${dbUserId}")
+    private String dbUserId;
 
-    @Value("${pwd}")
-    private String pwd;
+    @Value("${dbUserPwd}")
+    private String dbUserPwd;
 
-    @Bean
     public String connectionStringUrl(){
         StringBuilder sb = new StringBuilder("jdbc:postgresql://")
                 .append(dbHost)
@@ -72,8 +53,8 @@ public class CoreUtilCfg {
             var hc = new HikariConfig();
             hc.setJdbcUrl(connectionStringUrl());
             hc.setDriverClassName(driverClass);
-            hc.setUsername(pwd);
-            hc.setPassword(pwd);
+            hc.setUsername(dbUserId);
+            hc.setPassword(dbUserPwd);
             hc.setIdleTimeout(0);
             hc.setMinimumIdle(15);
             hc.setMaximumPoolSize(150);
@@ -87,29 +68,5 @@ public class CoreUtilCfg {
             logger.error("Hikari Datasource bean cannot be created");
             return null;
         }
-    }
-
-    @Bean
-    public IBA_DB_PostgreSQL dbPostgreSQL(){
-        IBA_DB_PostgreSQL iba_db_postgreSQL = new IBA_DB_PostgreSQL();
-        iba_db_postgreSQL.setDataSource(dataSource());
-        return iba_db_postgreSQL;
-    }
-
-//    @Bean
-//    public PostgreSQLDB postgreSQLDB(){
-//        PostgreSQLDB postgreSQLDB = new PostgreSQLDB();
-//        postgreSQLDB.setDataSource(dataSource());
-//        return  postgreSQLDB;
-//    }
-
-    @Bean
-    public IBAConnection ibaConnection(){
-        return new IBAConnection();
-    }
-
-    @Bean
-    public org.postgresql.Driver s_driver(){
-        return new Driver();
     }
 }

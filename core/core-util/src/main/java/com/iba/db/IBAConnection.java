@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.Properties;
 
 @Component
-public class IBAConnection{
+public class IBAConnection {
     private static final Logger logger = LoggerFactory.getLogger(IBAConnection.class);
 
     @Autowired
