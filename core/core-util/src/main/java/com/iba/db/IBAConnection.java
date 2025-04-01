@@ -2,17 +2,13 @@ package com.iba.db;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.*;
-import java.util.Properties;
 
-@Component
 public class IBAConnection {
     private static final Logger logger = LoggerFactory.getLogger(IBAConnection.class);
 
@@ -37,11 +33,11 @@ public class IBAConnection {
     @Value("${dbType}")
     private String dbType;
 
-    @Value("${uid}")
-    private String uid;
+    @Value("${dbUserId}")
+    private String dbUserId;
 
-    @Value("${pwd}")
-    private String pwd;
+    @Value("${dbUserPwd}")
+    private String dbUserPwd;
 
     private DataSource m_ds = null;
     private IBAGeneralDatabase m_db = null;
@@ -65,19 +61,19 @@ public class IBAConnection {
                 throw new Exception("Unknown database type");
             }
             Class.forName(driverClass);
-            conn = DriverManager.getConnection(ur, ur, pwd);
+            conn = DriverManager.getConnection(ur, dbUserId, dbUserPwd);
         }
         catch (Exception ex){}
 
         return conn;
     }
 
-    public String getUid() {
-        return uid;
+    public String getDbUserId() {
+        return dbUserId;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getDbUserPwd() {
+        return dbUserPwd;
     }
 
     public String getDbType() {
@@ -97,9 +93,9 @@ public class IBAConnection {
     }
 
     public IBAGeneralDatabase getDatabase(){
-        if(m_db != null || !m_db.getName().equals(getDbType())){
-            m_db = null;
-        }
+//        if(m_db != null || !m_db.getName().equals(getDbType())){
+//            m_db = null;
+//        }
 
         if(m_db == null){
             try{
@@ -152,8 +148,8 @@ public class IBAConnection {
                     cc.getDbPort().equals(dbPort) &&
                     cc.getDbName().equals(dbName) &&
                     cc.getDbType().equals(dbType) &&
-                    cc.getUid().equals(uid) &&
-                    cc.getPwd().equals(pwd)
+                    cc.getDbUserId().equals(dbUserId) &&
+                    cc.getDbUserPwd().equals(dbUserPwd)
             ){
                 return true;
             }
@@ -208,7 +204,7 @@ public class IBAConnection {
         StringBuilder sb = new StringBuilder();
         sb.append("{").append(dbHost)
                 .append("-").append(dbName)
-                .append("-").append(uid)
+                .append("-").append(dbUserId)
                 .append("}");
         if(m_db != null){
             sb.append(m_db.getStatus());
@@ -232,7 +228,6 @@ public class IBAConnection {
     }	//	getTransactionIsolationInfo
 
     public void dbOk(){
-        System.out.println(getDbHost());
         IBAConnection s_cc = ibaConnection;
         s_cc.setDataSource();
 

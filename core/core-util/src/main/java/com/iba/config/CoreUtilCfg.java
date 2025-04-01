@@ -1,5 +1,7 @@
 package com.iba.config;
 
+import com.iba.db.IBAConnection;
+import com.iba.db.IBA_DB_PostgreSQL;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.postgresql.Driver;
@@ -69,5 +71,22 @@ public class CoreUtilCfg {
             logger.error("Hikari Datasource bean cannot be created");
             return null;
         }
+    }
+
+    @Bean
+    public IBA_DB_PostgreSQL iba_db_postgreSQL(){
+        IBA_DB_PostgreSQL iba_db_postgreSQL = new IBA_DB_PostgreSQL();
+        iba_db_postgreSQL.setDataSource(dataSource());
+        return  iba_db_postgreSQL;
+    }
+
+    @Bean
+    public IBAConnection ibaConnection(){
+        return new IBAConnection();
+    }
+
+    @Bean
+    public org.postgresql.Driver s_driver(){
+        return new Driver();
     }
 }

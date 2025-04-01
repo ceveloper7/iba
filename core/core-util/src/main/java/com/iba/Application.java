@@ -10,6 +10,6 @@ public class Application {
     public static void main(String[] args) {
         var ctx = new AnnotationConfigApplicationContext(CoreUtilCfg.class);
         var connection = ctx.getBean(IBAConnection.class);
-        System.out.println(connection.getConnectionURL());
+        connection.dbOk();
     }
 }

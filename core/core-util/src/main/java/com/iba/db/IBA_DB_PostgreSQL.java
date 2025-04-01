@@ -163,13 +163,13 @@ public class IBA_DB_PostgreSQL implements IBAGeneralDatabase{
     @Override
     public Connection getDriverConnection (IBAConnection connection) throws SQLException{
         getDriver();
-        return DriverManager.getConnection(getConnectionURL(connection), connection.getUid(), connection.getPwd());
+        return DriverManager.getConnection(getConnectionURL(connection), connection.getDbUserId(), connection.getDbUserPwd());
     }
 
     @Override
-    public Connection getDriverConnection (String dbUrl, String dbUid, String dbPwd) throws SQLException{
+    public Connection getDriverConnection (String dbUrl, String dbUserId, String dbUserPwd) throws SQLException{
         getDriver();
-        return DriverManager.getConnection(dbUrl, dbUid, dbPwd);
+        return DriverManager.getConnection(dbUrl, dbUserId, dbUserPwd);
     }
 
     @Override
