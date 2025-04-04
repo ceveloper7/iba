@@ -1,6 +1,7 @@
 package com.iba.config;
 
 import com.iba.db.IBAConnection;
+import com.iba.db.IBAGeneralDatabase;
 import com.iba.db.IBA_DB_PostgreSQL;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -74,7 +75,7 @@ public class CoreUtilCfg {
     }
 
     @Bean
-    public IBA_DB_PostgreSQL iba_db_postgreSQL(){
+    public IBAGeneralDatabase iba_db_postgreSQL(){
         IBA_DB_PostgreSQL iba_db_postgreSQL = new IBA_DB_PostgreSQL();
         iba_db_postgreSQL.setDataSource(dataSource());
         return  iba_db_postgreSQL;

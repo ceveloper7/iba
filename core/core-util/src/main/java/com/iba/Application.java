@@ -11,5 +11,6 @@ public class Application {
         var ctx = new AnnotationConfigApplicationContext(CoreUtilCfg.class);
         var connection = ctx.getBean(IBAConnection.class);
         connection.dbOk();
+        
     }
 }
